@@ -75,7 +75,7 @@ except ApiException as e:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://localhost:8080/MIPT-2PC/preprocessor/1.0.0*
+All URIs are relative to *http://localhost:8080/MIPT-2PC/preprocessor/1.0.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

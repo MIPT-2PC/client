@@ -1,6 +1,6 @@
 # swagger_client.ApiApi
 
-All URIs are relative to *https://localhost:8080/MIPT-2PC/preprocessor/1.0.0*
+All URIs are relative to *http://localhost:8080/MIPT-2PC/preprocessor/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
