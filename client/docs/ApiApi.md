@@ -52,7 +52,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **operate**
-> list[Nums] operate(body=body)
+> list[Results] operate(body=body)
 
 operate 2 numbers
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[Nums]**](Nums.md)
+[**list[Results]**](Results.md)
 
 ### Authorization
 
