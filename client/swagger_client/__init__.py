@@ -3,9 +3,9 @@
 # flake8: noqa
 
 """
-    Preprocessor server
+    Preprocessor API
 
-    This is a simple API  # noqa: E501
+    This is MIPT-2PC preprocessor API  # noqa: E501
 
     OpenAPI spec version: 1.0.0
     Contact: mipt@mipt.ru
@@ -15,10 +15,9 @@
 from __future__ import absolute_import
 
 # import apis into sdk package
-from swagger_client.api.api_api import ApiApi
+from swagger_client.api.interaction_api import InteractionApi
 # import ApiClient
 from swagger_client.api_client import ApiClient
 from swagger_client.configuration import Configuration
 # import models into sdk package
-from swagger_client.models.nums import Nums
-from swagger_client.models.results import Results
+from swagger_client.models.table import Table

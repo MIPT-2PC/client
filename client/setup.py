@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Preprocessor server
+    Preprocessor API
 
-    This is a simple API  # noqa: E501
+    This is MIPT-2PC preprocessor API  # noqa: E501
 
     OpenAPI spec version: 1.0.0
     Contact: mipt@mipt.ru
@@ -26,14 +26,14 @@ REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 setup(
     name=NAME,
     version=VERSION,
-    description="Preprocessor server",
+    description="Preprocessor API",
     author_email="mipt@mipt.ru",
     url="",
-    keywords=["Swagger", "Preprocessor server"],
+    keywords=["Swagger", "Preprocessor API"],
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
     long_description="""\
-    This is a simple API  # noqa: E501
+    This is MIPT-2PC preprocessor API  # noqa: E501
     """
 )

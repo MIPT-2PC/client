@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Preprocessor server
+    Preprocessor API
 
-    This is a simple API  # noqa: E501
+    This is MIPT-2PC preprocessor API  # noqa: E501
 
     OpenAPI spec version: 1.0.0
     Contact: mipt@mipt.ru
@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from swagger_client.models.results import Results  # noqa: E501
+from swagger_client.models.table import Table  # noqa: E501
 from swagger_client.rest import ApiException
 
 
-class TestResults(unittest.TestCase):
-    """Results unit test stubs"""
+class TestTable(unittest.TestCase):
+    """Table unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestResults(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testResults(self):
-        """Test Results"""
+    def testTable(self):
+        """Test Table"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.results.Results()  # noqa: E501
+        # model = swagger_client.models.table.Table()  # noqa: E501
         pass
 
 

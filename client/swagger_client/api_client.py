@@ -1,8 +1,8 @@
 # coding: utf-8
 """
-    Preprocessor server
+    Preprocessor API
 
-    This is a simple API  # noqa: E501
+    This is MIPT-2PC preprocessor API  # noqa: E501
 
     OpenAPI spec version: 1.0.0
     Contact: mipt@mipt.ru

@@ -1,18 +1,18 @@
-# swagger_client.ApiApi
+# swagger_client.InteractionApi
 
 All URIs are relative to *http://localhost:8080/MIPT-2PC/preprocessor/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_results**](ApiApi.md#get_results) | **GET** /results | Get previous results
-[**operate**](ApiApi.md#operate) | **POST** /operate | operate 2 numbers
+[**get_table**](InteractionApi.md#get_table) | **GET** /getTable | hello message to get preprocessed data
+[**start2_pc**](InteractionApi.md#start2_pc) | **POST** /start2PC | start preprocessing procedure
 
-# **get_results**
-> list[Results] get_results()
+# **get_table**
+> list[Table] get_table()
 
-Get previous results
+hello message to get preprocessed data
 
-retrieve results
+Returns preprocessed table for this user, masked input and outputs
 
 ### Example
 ```python
@@ -23,14 +23,14 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.ApiApi()
+api_instance = swagger_client.InteractionApi()
 
 try:
-    # Get previous results
-    api_response = api_instance.get_results()
+    # hello message to get preprocessed data
+    api_response = api_instance.get_table()
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ApiApi->get_results: %s\n" % e)
+    print("Exception when calling InteractionApi->get_table: %s\n" % e)
 ```
 
 ### Parameters
@@ -38,7 +38,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**list[Results]**](Results.md)
+[**list[Table]**](Table.md)
 
 ### Authorization
 
@@ -51,12 +51,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **operate**
-> list[Results] operate(body=body)
+# **start2_pc**
+> list[Table] start2_pc(body=body)
 
-operate 2 numbers
+start preprocessing procedure
 
-operate 2 numbers with defined action
+send config file to start preprocessing
 
 ### Example
 ```python
@@ -67,26 +67,26 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.ApiApi()
-body = swagger_client.Nums() # Nums | Nums request body (optional)
+api_instance = swagger_client.InteractionApi()
+body = swagger_client.Table() # Table | Nums request body (optional)
 
 try:
-    # operate 2 numbers
-    api_response = api_instance.operate(body=body)
+    # start preprocessing procedure
+    api_response = api_instance.start2_pc(body=body)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ApiApi->operate: %s\n" % e)
+    print("Exception when calling InteractionApi->start2_pc: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Nums**](Nums.md)| Nums request body | [optional] 
+ **body** | [**Table**](Table.md)| Nums request body | [optional] 
 
 ### Return type
 
-[**list[Results]**](Results.md)
+[**list[Table]**](Table.md)
 
 ### Authorization
 
