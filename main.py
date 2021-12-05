@@ -9,7 +9,7 @@ from pprint import pprint
 
 # create an instance of the API class
 configuration = swagger_client.Configuration()
-api_instance = swagger_client.ApiApi(swagger_client.ApiClient(configuration))
+api_instance = swagger_client.InteractionApi(swagger_client.ApiClient(configuration))
 body = swagger_client.Nums(2.0, 5.0, operation="*")  # Nums | Nums request body (optional)
 
 print(body)
