@@ -28,14 +28,40 @@ class Table(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'payload': 'object'
     }
 
     attribute_map = {
+        'payload': 'payload'
     }
 
-    def __init__(self):  # noqa: E501
+    def __init__(self, payload=None):  # noqa: E501
         """Table - a model defined in Swagger"""  # noqa: E501
+        self._payload = None
         self.discriminator = None
+        if payload is not None:
+            self.payload = payload
+
+    @property
+    def payload(self):
+        """Gets the payload of this Table.  # noqa: E501
+
+
+        :return: The payload of this Table.  # noqa: E501
+        :rtype: object
+        """
+        return self._payload
+
+    @payload.setter
+    def payload(self, payload):
+        """Sets the payload of this Table.
+
+
+        :param payload: The payload of this Table.  # noqa: E501
+        :type: object
+        """
+
+        self._payload = payload
 
     def to_dict(self):
         """Returns the model properties as a dict"""
