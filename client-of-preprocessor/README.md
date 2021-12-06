@@ -93,4 +93,4 @@ Class | Method | HTTP request | Description
 
 ## Author
 
-mipt@mipt.ru
+prokhorov.va@phystech.edu
