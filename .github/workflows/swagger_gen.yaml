@@ -20,7 +20,7 @@ jobs:
           generate
           -i server-side/swagger_server/swagger/swagger.yaml
           -l python-flask
-          -o server
+          -o server-side
     - name: restore controllers
       run: |
         echo saving generated controllers to controllers_new
