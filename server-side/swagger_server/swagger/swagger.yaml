@@ -21,7 +21,7 @@ paths:
       - interaction
       summary: Exchange calculated nodes with self table from Nth layer
       description: Exchange calculated nodes with self table from Nth layer
-      operationId: exchangeOut
+      operationId: exchange_out
       requestBody:
         $ref: '#/components/requestBodies/ExchangePayload'
       responses:
@@ -41,6 +41,7 @@ paths:
           description: Invalid payload
         "500":
           description: Computation Error
+      x-openapi-router-controller: swagger_server.controllers.interaction_controller
   /hello:
     get:
       tags:
@@ -57,11 +58,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Table'
+                x-content-type: application/json
               examples:
                 tableExample:
                   $ref: '#/components/examples/preprocessedTableExample'
         "500":
           description: Preprocessing procedure hasn't been initiated
+      x-openapi-router-controller: swagger_server.controllers.interaction_controller
 components:
   schemas:
     Table:
@@ -141,3 +144,4 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ExchangePayload'
+
