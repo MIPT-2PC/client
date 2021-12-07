@@ -2,7 +2,6 @@ import connexion
 import six
 
 from swagger_server.models.answer import Answer  # noqa: E501
-from swagger_server.models.init import Init  # noqa: E501
 from swagger_server import util
 
 
@@ -17,16 +16,16 @@ def get_result():  # noqa: E501
     return 'do some magic!'
 
 
-def init(body=None):  # noqa: E501
+def init(input_number=None, config=None):  # noqa: E501
     """Init call to start 2PC process.
 
     Consumes input data for this user and config location # noqa: E501
 
-    :param body: Client sensitive data
-    :type body: dict | bytes
+    :param input_number: 
+    :type input_number: int
+    :param config: 
+    :type config: str
 
     :rtype: None
     """
-    if connexion.request.is_json:
-        body = Init.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
