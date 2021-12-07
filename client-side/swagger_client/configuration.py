@@ -2,7 +2,7 @@
 
 """
     User exchange API
-
+    # Patched by ProValdi
     User exchange API  # noqa: E501
 
     OpenAPI spec version: 1.0.0
@@ -46,11 +46,11 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
 
     def __init__(self):
         """Constructor"""
-        # Default Base url, CLIENT_A = 8080, CLIENT_B = 8081
+        # Default Base url, CLIENT_A = 8080, CLIENT_B = 8081, NEIGHBOR_PORT = CURRENT_CLIENT_A? CLIENT_B:CLIENT_A
         if os.getenv("CLIENT_A", None) is not None:
-            self.host = "http://localhost:8081/MIPT-2PC/user/1.0.0"
+            self.host = "http://localhost:"+os.getenv("NEIGHBOR_PORT")+"/MIPT-2PC/user/1.0.0"
         if os.getenv("CLIENT_B", None) is not None:
-            self.host = "http://localhost:8080/MIPT-2PC/user/1.0.0"
+            self.host = "http://localhost:"+os.getenv("NEIGHBOR_PORT")+"/MIPT-2PC/user/1.0.0"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 
