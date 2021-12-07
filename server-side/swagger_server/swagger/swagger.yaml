@@ -161,7 +161,6 @@ components:
           type: integer
         config:
           type: string
-          format: binary
       example:
         inputNumber: 54
         configLocation: config.txt
@@ -208,7 +207,7 @@ components:
     Init:
       description: Client sensitive data
       content:
-        text/plain:
+        multipart/form-data:
           schema:
             $ref: '#/components/schemas/Init'
 
