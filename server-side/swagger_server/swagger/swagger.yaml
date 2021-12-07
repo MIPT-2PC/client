@@ -208,7 +208,7 @@ components:
     Init:
       description: Client sensitive data
       content:
-        multipart/form-data:
+        text/plain:
           schema:
             $ref: '#/components/schemas/Init'
 

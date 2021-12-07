@@ -52,7 +52,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **init**
-> init(input_number=input_number, config=config)
+> init(body=body)
 
 Init call to start 2PC process.
 
@@ -68,12 +68,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ExternalCallsApi()
-input_number = 56 # int |  (optional)
-config = 'config_example' # str |  (optional)
+body = swagger_client.Init() # Init | Client sensitive data (optional)
 
 try:
     # Init call to start 2PC process.
-    api_instance.init(input_number=input_number, config=config)
+    api_instance.init(body=body)
 except ApiException as e:
     print("Exception when calling ExternalCallsApi->init: %s\n" % e)
 ```
@@ -82,8 +81,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input_number** | **int**|  | [optional] 
- **config** | **str**|  | [optional] 
+ **body** | [**Init**](Init.md)| Client sensitive data | [optional] 
 
 ### Return type
 
@@ -95,7 +93,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: text/plain
  - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
