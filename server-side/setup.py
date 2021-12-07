@@ -18,7 +18,7 @@ setup(
     name=NAME,
     version=VERSION,
     description="User exchange API",
-    author_email="mipt@mipt.ru",
+    author_email="prokhorov.va@phystech.edu",
     url="",
     keywords=["Swagger", "User exchange API"],
     install_requires=REQUIRES,

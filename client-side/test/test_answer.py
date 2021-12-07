@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from swagger_client.models.table import Table  # noqa: E501
+from swagger_client.models.answer import Answer  # noqa: E501
 from swagger_client.rest import ApiException
 
 
-class TestTable(unittest.TestCase):
-    """Table unit test stubs"""
+class TestAnswer(unittest.TestCase):
+    """Answer unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestTable(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testTable(self):
-        """Test Table"""
+    def testAnswer(self):
+        """Test Answer"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.table.Table()  # noqa: E501
+        # model = swagger_client.models.answer.Answer()  # noqa: E501
         pass
 
 

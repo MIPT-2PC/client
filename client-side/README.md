@@ -52,25 +52,24 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.InteractionApi(swagger_client.ApiClient(configuration))
+api_instance = swagger_client.ExternalCallsApi(swagger_client.ApiClient(configuration))
+
+try:
+    # returns calculated with 2PC result
+    api_response = api_instance.get_result()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ExternalCallsApi->get_result: %s\n" % e)
+
+# create an instance of the API class
+api_instance = swagger_client.ExternalCallsApi(swagger_client.ApiClient(configuration))
 body = swagger_client.ExchangePayload() # ExchangePayload | calculated payload to send to neighbour in Decimal representation (optional)
 
 try:
-    # Exchange calculated nodes with self table from Nth layer
-    api_response = api_instance.exchange_out(body=body)
-    pprint(api_response)
+    # Init call to start 2PC process.
+    api_instance.init(body=body)
 except ApiException as e:
-    print("Exception when calling InteractionApi->exchange_out: %s\n" % e)
-
-# create an instance of the API class
-api_instance = swagger_client.InteractionApi(swagger_client.ApiClient(configuration))
-
-try:
-    # hello message to get preprocessed data
-    api_response = api_instance.hello()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling InteractionApi->hello: %s\n" % e)
+    print("Exception when calling ExternalCallsApi->init: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -79,12 +78,16 @@ All URIs are relative to *http://localhost:8080/MIPT-2PC/user/1.0.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ExternalCallsApi* | [**get_result**](docs/ExternalCallsApi.md#get_result) | **GET** /getResult | returns calculated with 2PC result
+*ExternalCallsApi* | [**init**](docs/ExternalCallsApi.md#init) | **POST** /init | Init call to start 2PC process.
 *InteractionApi* | [**exchange_out**](docs/InteractionApi.md#exchange_out) | **POST** /exchangeOut | Exchange calculated nodes with self table from Nth layer
 *InteractionApi* | [**hello**](docs/InteractionApi.md#hello) | **GET** /hello | hello message to get preprocessed data
 
 ## Documentation For Models
 
+ - [Answer](docs/Answer.md)
  - [ExchangePayload](docs/ExchangePayload.md)
+ - [Init](docs/Init.md)
  - [Table](docs/Table.md)
 
 ## Documentation For Authorization
@@ -94,4 +97,4 @@ Class | Method | HTTP request | Description
 
 ## Author
 
-mipt@mipt.ru
+prokhorov.va@phystech.edu
