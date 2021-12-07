@@ -15,30 +15,30 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from swagger_client.api.interaction_api import InteractionApi  # noqa: E501
+from swagger_client.api.external_calls_api import ExternalCallsApi  # noqa: E501
 from swagger_client.rest import ApiException
 
 
-class TestInteractionApi(unittest.TestCase):
-    """InteractionApi unit test stubs"""
+class TestExternalCallsApi(unittest.TestCase):
+    """ExternalCallsApi unit test stubs"""
 
     def setUp(self):
-        self.api = InteractionApi()  # noqa: E501
+        self.api = ExternalCallsApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_exchange_out(self):
-        """Test case for exchange_out
+    def test_get_result(self):
+        """Test case for get_result
 
-        Exchange calculated nodes with self table from Nth layer  # noqa: E501
+        returns calculated with 2PC result  # noqa: E501
         """
         pass
 
-    def test_hello(self):
-        """Test case for hello
+    def test_init(self):
+        """Test case for init
 
-        hello message to get preprocessed data  # noqa: E501
+        Init call to start 2PC process.  # noqa: E501
         """
         pass
 
