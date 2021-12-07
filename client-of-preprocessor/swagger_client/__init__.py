@@ -15,7 +15,7 @@
 from __future__ import absolute_import
 
 # import apis into sdk package
-from swagger_client.api.interaction_api import InteractionApi
+from swagger_client.api.preprocessor_api import PreprocessorApi
 # import ApiClient
 from swagger_client.api_client import ApiClient
 from swagger_client.configuration import Configuration

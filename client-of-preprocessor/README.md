@@ -52,17 +52,17 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.InteractionApi(swagger_client.ApiClient(configuration))
+api_instance = swagger_client.PreprocessorApi(swagger_client.ApiClient(configuration))
 
 try:
     # hello message to get preprocessed data
     api_response = api_instance.get_table()
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling InteractionApi->get_table: %s\n" % e)
+    print("Exception when calling PreprocessorApi->get_table: %s\n" % e)
 
 # create an instance of the API class
-api_instance = swagger_client.InteractionApi(swagger_client.ApiClient(configuration))
+api_instance = swagger_client.PreprocessorApi(swagger_client.ApiClient(configuration))
 body = swagger_client.Table() # Table | Nums request body (optional)
 
 try:
@@ -70,7 +70,7 @@ try:
     api_response = api_instance.start2_pc(body=body)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling InteractionApi->start2_pc: %s\n" % e)
+    print("Exception when calling PreprocessorApi->start2_pc: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -79,8 +79,8 @@ All URIs are relative to *http://localhost:8080/MIPT-2PC/preprocessor/1.0.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*InteractionApi* | [**get_table**](docs/InteractionApi.md#get_table) | **GET** /getTable | hello message to get preprocessed data
-*InteractionApi* | [**start2_pc**](docs/InteractionApi.md#start2_pc) | **POST** /start2PC | start preprocessing procedure
+*PreprocessorApi* | [**get_table**](docs/PreprocessorApi.md#get_table) | **GET** /getTable | hello message to get preprocessed data
+*PreprocessorApi* | [**start2_pc**](docs/PreprocessorApi.md#start2_pc) | **POST** /start2PC | start preprocessing procedure
 
 ## Documentation For Models
 

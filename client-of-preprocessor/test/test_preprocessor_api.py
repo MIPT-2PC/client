@@ -15,15 +15,15 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from swagger_client.api.interaction_api import InteractionApi  # noqa: E501
+from swagger_client.api.preprocessor_api import PreprocessorApi  # noqa: E501
 from swagger_client.rest import ApiException
 
 
-class TestInteractionApi(unittest.TestCase):
-    """InteractionApi unit test stubs"""
+class TestPreprocessorApi(unittest.TestCase):
+    """PreprocessorApi unit test stubs"""
 
     def setUp(self):
-        self.api = InteractionApi()  # noqa: E501
+        self.api = PreprocessorApi()  # noqa: E501
 
     def tearDown(self):
         pass
