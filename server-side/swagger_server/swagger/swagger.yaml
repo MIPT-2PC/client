@@ -52,7 +52,7 @@ paths:
       description: Consumes input data for this user and config location
       operationId: init
       requestBody:
-        $ref: '#/components/requestBodies/ExchangePayload'
+        $ref: '#/components/requestBodies/Init'
       responses:
         "200":
           description: Success initiation. Results will be available with /getResult
