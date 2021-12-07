@@ -155,14 +155,16 @@ components:
       example:
         result: 102
     Init:
+      type: object
       properties:
         inputNumber:
           type: integer
-        configLocation:
+        config:
           type: string
+          format: binary
       example:
         inputNumber: 54
-        configLocation: ../../config.txt
+        configLocation: config.txt
   examples:
     exchangePayloadExample:
       summary: Calculated layer example in Decimal representation
@@ -206,7 +208,7 @@ components:
     Init:
       description: Client sensitive data
       content:
-        application/json:
+        multipart/form-data:
           schema:
             $ref: '#/components/schemas/Init'
 

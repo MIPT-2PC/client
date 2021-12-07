@@ -29,23 +29,23 @@ class Init(object):
     """
     swagger_types = {
         'input_number': 'int',
-        'config_location': 'str'
+        'config': 'str'
     }
 
     attribute_map = {
         'input_number': 'inputNumber',
-        'config_location': 'configLocation'
+        'config': 'config'
     }
 
-    def __init__(self, input_number=None, config_location=None):  # noqa: E501
+    def __init__(self, input_number=None, config=None):  # noqa: E501
         """Init - a model defined in Swagger"""  # noqa: E501
         self._input_number = None
-        self._config_location = None
+        self._config = None
         self.discriminator = None
         if input_number is not None:
             self.input_number = input_number
-        if config_location is not None:
-            self.config_location = config_location
+        if config is not None:
+            self.config = config
 
     @property
     def input_number(self):
@@ -69,25 +69,25 @@ class Init(object):
         self._input_number = input_number
 
     @property
-    def config_location(self):
-        """Gets the config_location of this Init.  # noqa: E501
+    def config(self):
+        """Gets the config of this Init.  # noqa: E501
 
 
-        :return: The config_location of this Init.  # noqa: E501
+        :return: The config of this Init.  # noqa: E501
         :rtype: str
         """
-        return self._config_location
+        return self._config
 
-    @config_location.setter
-    def config_location(self, config_location):
-        """Sets the config_location of this Init.
+    @config.setter
+    def config(self, config):
+        """Sets the config of this Init.
 
 
-        :param config_location: The config_location of this Init.  # noqa: E501
+        :param config: The config of this Init.  # noqa: E501
         :type: str
         """
 
-        self._config_location = config_location
+        self._config = config
 
     def to_dict(self):
         """Returns the model properties as a dict"""
