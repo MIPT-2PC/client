@@ -2,7 +2,7 @@ import connexion
 import six
 
 from swagger_server.models.exchange_payload import ExchangePayload  # noqa: E501
-from swagger_server.models.table import Table  # noqa: E501
+from swagger_server.models.inline_response200 import InlineResponse200  # noqa: E501
 from swagger_server import util
 
 
@@ -22,11 +22,11 @@ def exchange_out(body=None):  # noqa: E501
 
 
 def hello():  # noqa: E501
-    """hello message to get preprocessed data
+    """hello message to neighbour
 
-    Returns preprocessed table for this user, masked input and outputs # noqa: E501
+    Returns hello message # noqa: E501
 
 
-    :rtype: List[Table]
+    :rtype: InlineResponse200
     """
     return 'do some magic!'

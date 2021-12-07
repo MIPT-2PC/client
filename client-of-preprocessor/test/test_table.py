@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.table import Table  # noqa: E501
-from swagger_client.rest import ApiException
+import swagger_client_pre_pre
+from swagger_client_pre_pre.models.table import Table  # noqa: E501
+from swagger_client_pre_pre.rest import ApiException
 
 
 class TestTable(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestTable(unittest.TestCase):
     def testTable(self):
         """Test Table"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.table.Table()  # noqa: E501
+        # model = swagger_client_pre_pre.models.table.Table()  # noqa: E501
         pass
 
 

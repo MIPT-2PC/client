@@ -31,7 +31,7 @@ class TestTable(unittest.TestCase):
     def testTable(self):
         """Test Table"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.table.Table()  # noqa: E501
+        # model = swagger_client_pre.models.table.Table()  # noqa: E501
         pass
 
 

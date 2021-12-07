@@ -31,7 +31,7 @@ class TestInit(unittest.TestCase):
     def testInit(self):
         """Test Init"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.init.Init()  # noqa: E501
+        # model = swagger_client_pre.models.init.Init()  # noqa: E501
         pass
 
 

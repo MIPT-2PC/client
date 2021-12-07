@@ -31,7 +31,7 @@ class TestExchangePayload(unittest.TestCase):
     def testExchangePayload(self):
         """Test ExchangePayload"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.exchange_payload.ExchangePayload()  # noqa: E501
+        # model = swagger_client_pre.models.exchange_payload.ExchangePayload()  # noqa: E501
         pass
 
 
