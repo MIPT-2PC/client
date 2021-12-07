@@ -129,8 +129,7 @@ class ExternalCallsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int input_number:
-        :param str config:
+        :param Init body: Client sensitive data
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -152,14 +151,13 @@ class ExternalCallsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int input_number:
-        :param str config:
+        :param Init body: Client sensitive data
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['input_number', 'config']  # noqa: E501
+        all_params = ['body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -185,15 +183,13 @@ class ExternalCallsApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'input_number' in params:
-            form_params.append(('inputNumber', params['input_number']))  # noqa: E501
-        if 'config' in params:
-            local_var_files['config'] = params['config']  # noqa: E501
 
         body_params = None
+        if 'body' in params:
+            body_params = params['body']
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
+            ['text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501

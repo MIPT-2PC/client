@@ -63,12 +63,11 @@ except ApiException as e:
 
 # create an instance of the API class
 api_instance = swagger_client.ExternalCallsApi(swagger_client.ApiClient(configuration))
-input_number = 56 # int |  (optional)
-config = 'config_example' # str |  (optional)
+body = swagger_client.Init() # Init | Client sensitive data (optional)
 
 try:
     # Init call to start 2PC process.
-    api_instance.init(input_number=input_number, config=config)
+    api_instance.init(body=body)
 except ApiException as e:
     print("Exception when calling ExternalCallsApi->init: %s\n" % e)
 ```
