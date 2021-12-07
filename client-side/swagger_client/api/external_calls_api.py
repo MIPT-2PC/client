@@ -129,7 +129,7 @@ class ExternalCallsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param ExchangePayload body: calculated payload to send to neighbour in Decimal representation
+        :param Init body: Client sensitive data
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -151,7 +151,7 @@ class ExternalCallsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param ExchangePayload body: calculated payload to send to neighbour in Decimal representation
+        :param Init body: Client sensitive data
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.

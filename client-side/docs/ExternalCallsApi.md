@@ -68,7 +68,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ExternalCallsApi()
-body = swagger_client.ExchangePayload() # ExchangePayload | calculated payload to send to neighbour in Decimal representation (optional)
+body = swagger_client.Init() # Init | Client sensitive data (optional)
 
 try:
     # Init call to start 2PC process.
@@ -81,7 +81,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**ExchangePayload**](ExchangePayload.md)| calculated payload to send to neighbour in Decimal representation | [optional] 
+ **body** | [**Init**](Init.md)| Client sensitive data | [optional] 
 
 ### Return type
 

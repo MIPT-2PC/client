@@ -63,7 +63,7 @@ except ApiException as e:
 
 # create an instance of the API class
 api_instance = swagger_client.ExternalCallsApi(swagger_client.ApiClient(configuration))
-body = swagger_client.ExchangePayload() # ExchangePayload | calculated payload to send to neighbour in Decimal representation (optional)
+body = swagger_client.Init() # Init | Client sensitive data (optional)
 
 try:
     # Init call to start 2PC process.
