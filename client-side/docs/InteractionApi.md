@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost:8080/MIPT-2PC/user/1.0.0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**exchange_out**](InteractionApi.md#exchange_out) | **POST** /exchangeOut | Exchange calculated nodes with self table from Nth layer
-[**hello**](InteractionApi.md#hello) | **GET** /hello | hello message to get preprocessed data
+[**hello**](InteractionApi.md#hello) | **GET** /hello | hello message to neighbour
 
 # **exchange_out**
 > list[ExchangePayload] exchange_out(body=body)
@@ -56,11 +56,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **hello**
-> list[Table] hello()
+> InlineResponse200 hello()
 
-hello message to get preprocessed data
+hello message to neighbour
 
-Returns preprocessed table for this user, masked input and outputs
+Returns hello message
 
 ### Example
 ```python
@@ -74,7 +74,7 @@ from pprint import pprint
 api_instance = swagger_client.InteractionApi()
 
 try:
-    # hello message to get preprocessed data
+    # hello message to neighbour
     api_response = api_instance.hello()
     pprint(api_response)
 except ApiException as e:
@@ -86,7 +86,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**list[Table]**](Table.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 

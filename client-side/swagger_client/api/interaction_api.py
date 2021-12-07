@@ -128,16 +128,16 @@ class InteractionApi(object):
             collection_formats=collection_formats)
 
     def hello(self, **kwargs):  # noqa: E501
-        """hello message to get preprocessed data  # noqa: E501
+        """hello message to neighbour  # noqa: E501
 
-        Returns preprocessed table for this user, masked input and outputs  # noqa: E501
+        Returns hello message  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.hello(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :return: list[Table]
+        :return: InlineResponse200
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -149,16 +149,16 @@ class InteractionApi(object):
             return data
 
     def hello_with_http_info(self, **kwargs):  # noqa: E501
-        """hello message to get preprocessed data  # noqa: E501
+        """hello message to neighbour  # noqa: E501
 
-        Returns preprocessed table for this user, masked input and outputs  # noqa: E501
+        Returns hello message  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.hello_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :return: list[Table]
+        :return: InlineResponse200
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -206,7 +206,7 @@ class InteractionApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[Table]',  # noqa: E501
+            response_type='InlineResponse200',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

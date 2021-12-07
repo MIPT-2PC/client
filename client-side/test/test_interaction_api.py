@@ -38,7 +38,7 @@ class TestInteractionApi(unittest.TestCase):
     def test_hello(self):
         """Test case for hello
 
-        hello message to get preprocessed data  # noqa: E501
+        hello message to neighbour  # noqa: E501
         """
         pass
 
