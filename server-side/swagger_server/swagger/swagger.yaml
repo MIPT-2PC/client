@@ -3,7 +3,7 @@ info:
   title: User exchange API
   description: User exchange API
   contact:
-    email: mipt@mipt.ru
+    email: prokhorov.va@phystech.edu
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -13,7 +13,9 @@ servers:
   description: SwaggerHub API Auto Mocking
 tags:
 - name: interaction
-  description: Calculation exchanging
+  description: Calculation exchanging between users
+- name: externalCalls
+  description: External API for consumers
 paths:
   /exchangeOut:
     post:
@@ -21,7 +23,7 @@ paths:
       - interaction
       summary: Exchange calculated nodes with self table from Nth layer
       description: Exchange calculated nodes with self table from Nth layer
-      operationId: exchange_out
+      operationId: exchangeOut
       requestBody:
         $ref: '#/components/requestBodies/ExchangePayload'
       responses:
@@ -41,7 +43,23 @@ paths:
           description: Invalid payload
         "500":
           description: Computation Error
-      x-openapi-router-controller: swagger_server.controllers.interaction_controller
+  /init:
+    post:
+      tags:
+      - externalCalls
+      summary: Init call to start 2PC process.
+      description: Consumes input data for this user and config location
+      operationId: init
+      requestBody:
+        $ref: '#/components/requestBodies/ExchangePayload'
+      responses:
+        "200":
+          description: Success initiation. Results will be available with /getResult
+            request
+        "400":
+          description: Invalid input
+        "500":
+          description: Computation Error
   /hello:
     get:
       tags:
@@ -58,13 +76,33 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Table'
-                x-content-type: application/json
               examples:
                 tableExample:
                   $ref: '#/components/examples/preprocessedTableExample'
         "500":
           description: Preprocessing procedure hasn't been initiated
-      x-openapi-router-controller: swagger_server.controllers.interaction_controller
+  /getResult:
+    get:
+      tags:
+      - externalCalls
+      summary: returns calculated with 2PC result
+      description: Returns the result of computation on config with A & B inputs
+      operationId: getResult
+      responses:
+        "200":
+          description: Result was correct
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Answer'
+              example:
+                result: 102
+        "404":
+          description: Calculation is still in process or hasn't been initiated
+        "500":
+          description: Something went wrong in 2PC e2e
 components:
   schemas:
     Table:
@@ -104,6 +142,21 @@ components:
       example:
         startIndex: 54
         outArray: 12
+    Answer:
+      properties:
+        result:
+          type: integer
+      example:
+        result: 102
+    Init:
+      properties:
+        inputNumber:
+          type: integer
+        configLocation:
+          type: string
+      example:
+        inputNumber: 54
+        configLocation: ../../config.txt
   examples:
     exchangePayloadExample:
       summary: Calculated layer example in Decimal representation
@@ -144,4 +197,9 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ExchangePayload'
-
+    Init:
+      description: Client sensitive data
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Init'
