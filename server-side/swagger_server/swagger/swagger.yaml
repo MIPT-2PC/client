@@ -23,7 +23,7 @@ paths:
       - interaction
       summary: Exchange calculated nodes with self table from Nth layer
       description: Exchange calculated nodes with self table from Nth layer
-      operationId: exchange_out
+      operationId: exchangeOut
       requestBody:
         $ref: '#/components/requestBodies/ExchangePayload'
       responses:
@@ -43,7 +43,6 @@ paths:
           description: Invalid payload
         "500":
           description: Computation Error
-      x-openapi-router-controller: swagger_server.controllers.interaction_controller
   /init:
     post:
       tags:
@@ -52,7 +51,7 @@ paths:
       description: Consumes input data for this user and config location
       operationId: init
       requestBody:
-        $ref: '#/components/requestBodies/ExchangePayload'
+        $ref: '#/components/requestBodies/Init'
       responses:
         "200":
           description: Success initiation. Results will be available with /getResult
@@ -61,7 +60,6 @@ paths:
           description: Invalid input
         "500":
           description: Computation Error
-      x-openapi-router-controller: swagger_server.controllers.external_calls_controller
   /hello:
     get:
       tags:
@@ -78,20 +76,18 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Table'
-                x-content-type: application/json
               examples:
                 tableExample:
                   $ref: '#/components/examples/preprocessedTableExample'
         "500":
           description: Preprocessing procedure hasn't been initiated
-      x-openapi-router-controller: swagger_server.controllers.interaction_controller
   /getResult:
     get:
       tags:
       - externalCalls
       summary: returns calculated with 2PC result
       description: Returns the result of computation on config with A & B inputs
-      operationId: get_result
+      operationId: getResult
       responses:
         "200":
           description: Result was correct
@@ -101,14 +97,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Answer'
-                x-content-type: application/json
               example:
                 result: 102
         "404":
           description: Calculation is still in process or hasn't been initiated
         "500":
           description: Something went wrong in 2PC e2e
-      x-openapi-router-controller: swagger_server.controllers.external_calls_controller
 components:
   schemas:
     Table:
@@ -209,4 +203,3 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Init'
-
