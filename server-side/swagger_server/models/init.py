@@ -14,25 +14,25 @@ class Init(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, input_number: int=None, config_location: str=None):  # noqa: E501
+    def __init__(self, input_number: int=None, config: str=None):  # noqa: E501
         """Init - a model defined in Swagger
 
         :param input_number: The input_number of this Init.  # noqa: E501
         :type input_number: int
-        :param config_location: The config_location of this Init.  # noqa: E501
-        :type config_location: str
+        :param config: The config of this Init.  # noqa: E501
+        :type config: str
         """
         self.swagger_types = {
             'input_number': int,
-            'config_location': str
+            'config': str
         }
 
         self.attribute_map = {
             'input_number': 'inputNumber',
-            'config_location': 'configLocation'
+            'config': 'config'
         }
         self._input_number = input_number
-        self._config_location = config_location
+        self._config = config
 
     @classmethod
     def from_dict(cls, dikt) -> 'Init':
@@ -67,22 +67,22 @@ class Init(Model):
         self._input_number = input_number
 
     @property
-    def config_location(self) -> str:
-        """Gets the config_location of this Init.
+    def config(self) -> str:
+        """Gets the config of this Init.
 
 
-        :return: The config_location of this Init.
+        :return: The config of this Init.
         :rtype: str
         """
-        return self._config_location
+        return self._config
 
-    @config_location.setter
-    def config_location(self, config_location: str):
-        """Sets the config_location of this Init.
+    @config.setter
+    def config(self, config: str):
+        """Sets the config of this Init.
 
 
-        :param config_location: The config_location of this Init.
-        :type config_location: str
+        :param config: The config of this Init.
+        :type config: str
         """
 
-        self._config_location = config_location
+        self._config = config
