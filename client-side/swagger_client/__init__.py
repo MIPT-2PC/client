@@ -24,4 +24,5 @@ from swagger_client.configuration import Configuration
 from swagger_client.models.answer import Answer
 from swagger_client.models.exchange_payload import ExchangePayload
 from swagger_client.models.init import Init
+from swagger_client.models.inline_response200 import InlineResponse200
 from swagger_client.models.table import Table

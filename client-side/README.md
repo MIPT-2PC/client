@@ -82,13 +82,14 @@ Class | Method | HTTP request | Description
 *ExternalCallsApi* | [**get_result**](docs/ExternalCallsApi.md#get_result) | **GET** /getResult | returns calculated with 2PC result
 *ExternalCallsApi* | [**init**](docs/ExternalCallsApi.md#init) | **POST** /init | Init call to start 2PC process.
 *InteractionApi* | [**exchange_out**](docs/InteractionApi.md#exchange_out) | **POST** /exchangeOut | Exchange calculated nodes with self table from Nth layer
-*InteractionApi* | [**hello**](docs/InteractionApi.md#hello) | **GET** /hello | hello message to get preprocessed data
+*InteractionApi* | [**hello**](docs/InteractionApi.md#hello) | **GET** /hello | hello message to neighbour
 
 ## Documentation For Models
 
  - [Answer](docs/Answer.md)
  - [ExchangePayload](docs/ExchangePayload.md)
  - [Init](docs/Init.md)
+ - [InlineResponse200](docs/InlineResponse200.md)
  - [Table](docs/Table.md)
 
 ## Documentation For Authorization

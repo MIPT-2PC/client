@@ -66,24 +66,20 @@ paths:
     get:
       tags:
       - interaction
-      summary: hello message to get preprocessed data
-      description: "Returns preprocessed table for this user, masked input and outputs"
+      summary: hello message to neighbour
+      description: Returns hello message
       operationId: hello
       responses:
         "200":
-          description: Data preprocessed successfully
+          description: Neighbour detected
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Table'
-                x-content-type: application/json
-              examples:
-                tableExample:
-                  $ref: '#/components/examples/preprocessedTableExample'
+                $ref: '#/components/schemas/inline_response_200'
+              example:
+                hello: Hello
         "500":
-          description: Preprocessing procedure hasn't been initiated
+          description: Neighbour is not alive
       x-openapi-router-controller: swagger_server.controllers.interaction_controller
   /getResult:
     get:
@@ -164,6 +160,13 @@ components:
       example:
         inputNumber: 54
         configLocation: config.txt
+    inline_response_200:
+      type: object
+      properties:
+        hello:
+          type: string
+      example:
+        hello: hello
   examples:
     exchangePayloadExample:
       summary: Calculated layer example in Decimal representation
