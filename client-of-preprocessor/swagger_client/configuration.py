@@ -46,7 +46,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
     def __init__(self):
         """Constructor"""
         # Default Base url
-        self.host = "http://localhost:8087/MIPT-2PC/preprocessor/1.0.0"
+        self.host = "http://localhost:8080/MIPT-2PC/preprocessor/1.0.0"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 
@@ -63,7 +63,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         self.password = ""
         # Logging Settings
         self.logger = {}
-        self.logger["package_logger"] = logging.getLogger("swagger_client_pre_pre")
+        self.logger["package_logger"] = logging.getLogger("swagger_client")
         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
         # Log format
         self.logger_format = '%(asctime)s %(levelname)s %(message)s'

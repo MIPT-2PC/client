@@ -15,9 +15,9 @@
 from __future__ import absolute_import
 
 # import apis into sdk package
-from swagger_client_pre_pre.api.preprocessor_api import PreprocessorApi
+from swagger_client.api.preprocessor_api import PreprocessorApi
 # import ApiClient
-from swagger_client_pre_pre.api_client import ApiClient
-from swagger_client_pre_pre.configuration import Configuration
+from swagger_client.api_client import ApiClient
+from swagger_client.configuration import Configuration
 # import models into sdk package
-from swagger_client_pre_pre.models.table import Table
+from swagger_client.models.table import Table

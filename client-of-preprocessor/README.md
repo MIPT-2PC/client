@@ -23,7 +23,7 @@ pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 
 Then import the package:
 ```python
-import swagger_client_pre 
+import swagger_client 
 ```
 
 ### Setuptools
@@ -37,7 +37,7 @@ python setup.py install --user
 
 Then import the package:
 ```python
-import swagger_client_pre
+import swagger_client
 ```
 
 ## Getting Started
@@ -47,12 +47,12 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```python
 from __future__ import print_function
 import time
-import swagger_client_pre
-from swagger_client_pre.rest import ApiException
+import swagger_client
+from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client_pre.PreprocessorApi(swagger_client_pre.ApiClient(configuration))
+api_instance = swagger_client.PreprocessorApi(swagger_client.ApiClient(configuration))
 
 try:
     # hello message to get preprocessed data
@@ -62,8 +62,8 @@ except ApiException as e:
     print("Exception when calling PreprocessorApi->get_table: %s\n" % e)
 
 # create an instance of the API class
-api_instance = swagger_client_pre.PreprocessorApi(swagger_client_pre.ApiClient(configuration))
-body = swagger_client_pre.Table() # Table | Nums request body (optional)
+api_instance = swagger_client.PreprocessorApi(swagger_client.ApiClient(configuration))
+body = swagger_client.Table() # Table | Nums request body (optional)
 
 try:
     # start preprocessing procedure
