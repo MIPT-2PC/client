@@ -14,8 +14,4 @@
 from __future__ import absolute_import
 
 # import models into model package
-<<<<<<< HEAD:client-of-preprocessor/swagger_client_pre_pre/models/__init__.py
-from swagger_client_pre_pre.models.table import Table
-=======
-from swagger_client_pre.models.table import Table
->>>>>>> dc234be97aeebc8f19b6f397789ae22d154cd876:client-of-preprocessor/swagger_client_pre/models/__init__.py
+from swagger_client.models.table import Table
