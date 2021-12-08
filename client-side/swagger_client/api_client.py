@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream:client-side/swagger_client/api_client.py
-=======
 # coding: utf-8
 """
     User exchange API
@@ -24,9 +22,9 @@ import tempfile
 import six
 from six.moves.urllib.parse import quote
 
-from swagger_client_pre.configuration import Configuration
-import swagger_client_pre.models
-from swagger_client_pre import rest
+from swagger_client.configuration import Configuration
+import swagger_client.models
+from swagger_client import rest
 
 
 class ApiClient(object):
@@ -259,7 +257,7 @@ class ApiClient(object):
             if klass in self.NATIVE_TYPES_MAPPING:
                 klass = self.NATIVE_TYPES_MAPPING[klass]
             else:
-                klass = getattr(swagger_client_pre.models, klass)
+                klass = getattr(swagger_client.models, klass)
 
         if klass in self.PRIMITIVE_TYPES:
             return self.__deserialize_primitive(data, klass)
@@ -628,4 +626,3 @@ class ApiClient(object):
             if klass_name:
                 instance = self.__deserialize(data, klass_name)
         return instance
->>>>>>> Stashed changes:client-side/swagger_client_pre/api_client.py

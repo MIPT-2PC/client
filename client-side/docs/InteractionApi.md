@@ -1,4 +1,4 @@
-# swagger_client_pre.InteractionApi
+# swagger_client.InteractionApi
 
 All URIs are relative to *http://localhost:8080/MIPT-2PC/user/1.0.0*
 
@@ -18,13 +18,13 @@ Exchange calculated nodes with self table from Nth layer
 ```python
 from __future__ import print_function
 import time
-import swagger_client_pre
-from swagger_client_pre.rest import ApiException
+import swagger_client
+from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client_pre.InteractionApi()
-body = swagger_client_pre.ExchangePayload() # ExchangePayload | calculated payload to send to neighbour in Decimal representation (optional)
+api_instance = swagger_client.InteractionApi()
+body = swagger_client.ExchangePayload() # ExchangePayload | calculated payload to send to neighbour in Decimal representation (optional)
 
 try:
     # Exchange calculated nodes with self table from Nth layer
@@ -66,12 +66,12 @@ Returns hello message
 ```python
 from __future__ import print_function
 import time
-import swagger_client_pre
-from swagger_client_pre.rest import ApiException
+import swagger_client
+from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client_pre.InteractionApi()
+api_instance = swagger_client.InteractionApi()
 
 try:
     # hello message to neighbour

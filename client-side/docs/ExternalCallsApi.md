@@ -1,4 +1,4 @@
-# swagger_client_pre.ExternalCallsApi
+# swagger_client.ExternalCallsApi
 
 All URIs are relative to *http://localhost:8080/MIPT-2PC/user/1.0.0*
 
@@ -18,12 +18,12 @@ Returns the result of computation on config with A & B inputs
 ```python
 from __future__ import print_function
 import time
-import swagger_client_pre
-from swagger_client_pre.rest import ApiException
+import swagger_client
+from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client_pre.ExternalCallsApi()
+api_instance = swagger_client.ExternalCallsApi()
 
 try:
     # returns calculated with 2PC result
@@ -62,12 +62,12 @@ Consumes input data for this user and config location
 ```python
 from __future__ import print_function
 import time
-import swagger_client_pre
-from swagger_client_pre.rest import ApiException
+import swagger_client
+from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client_pre.ExternalCallsApi()
+api_instance = swagger_client.ExternalCallsApi()
 input_number = 56 # int |  (optional)
 config = 'config_example' # str |  (optional)
 

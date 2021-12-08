@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client_pre_pre
-from swagger_client_pre_pre.api.preprocessor_api import PreprocessorApi  # noqa: E501
-from swagger_client_pre_pre.rest import ApiException
+import swagger_client_pre
+from swagger_client_pre.api.preprocessor_api import PreprocessorApi  # noqa: E501
+from swagger_client_pre.rest import ApiException
 
 
 class TestPreprocessorApi(unittest.TestCase):
