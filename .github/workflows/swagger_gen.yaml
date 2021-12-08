@@ -38,9 +38,9 @@ jobs:
     - name: rename client-of-preprocessor module
       run: |
         if [ -d ./client-of-preprocessor/swagger_client ]; then
-          mv ./client-of-preprocessor/swagger_client ./client-of-preprocessor/swagger_client
+          mv ./client-of-preprocessor/swagger_client ./client-of-preprocessor/swagger_client_pre
         fi
-        find ./client-of-preprocessor/swagger_client \( -type d -name .git -prune \) -o -type f -print0 | xargs -0 sed -i 's/swagger\_client/swagger_client/g'
+        find ./client-of-preprocessor/swagger_client_pre \( -type d -name .git -prune \) -o -type f -print0 | xargs -0 sed -i 's/swagger\_client/swagger_client_pre/g'
     - name: patch __main__.py
       if: always()
       run: |
@@ -50,5 +50,5 @@ jobs:
       if: always()
       run: |
         echo "patching configuration.py"
-        patch client-side/swagger_server/configuration.py < client-side/__configuration__.patch
+        patch client-side/swagger_server/configuration.py < ./__configuration__.patch
     - uses: stefanzweifel/git-auto-commit-action@v4 # commiting changes
