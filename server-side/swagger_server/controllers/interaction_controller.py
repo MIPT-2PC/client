@@ -5,8 +5,8 @@ from swagger_server.models.exchange_payload import ExchangePayload  # noqa: E501
 from swagger_server.models.inline_response200 import InlineResponse200  # noqa: E501
 from swagger_server import util
 
-from service.init_routine import *
-from service.calculation_routine import *
+from .service.init_routine import *
+from .service.calculation_routine import *
 import os
 from threading import Thread
 from queue import Queue
