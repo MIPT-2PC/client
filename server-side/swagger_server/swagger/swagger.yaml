@@ -1,0 +1,216 @@
+openapi: 3.0.0
+info:
+  title: User exchange API
+  description: User exchange API
+  contact:
+    email: prokhorov.va@phystech.edu
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: http://localhost:8080/MIPT-2PC/user/1.0.0
+  description: SwaggerHub API Auto Mocking
+tags:
+- name: interaction
+  description: Calculation exchanging between users
+- name: externalCalls
+  description: External API for consumers
+paths:
+  /exchangeOut:
+    post:
+      tags:
+      - interaction
+      summary: Exchange calculated nodes with self table from Nth layer
+      description: Exchange calculated nodes with self table from Nth layer
+      operationId: exchange_out
+      requestBody:
+        $ref: '#/components/requestBodies/ExchangePayload'
+      responses:
+        "200":
+          description: Success exchange
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExchangePayload'
+                x-content-type: application/json
+              examples:
+                tableExample:
+                  $ref: '#/components/examples/exchangePayloadExample'
+        "400":
+          description: Invalid payload
+        "500":
+          description: Computation Error
+      x-openapi-router-controller: swagger_server.controllers.interaction_controller
+  /init:
+    post:
+      tags:
+      - externalCalls
+      summary: Init call to start 2PC process.
+      description: Consumes input data for this user and config location
+      operationId: init
+      requestBody:
+        $ref: '#/components/requestBodies/Init'
+      responses:
+        "200":
+          description: Success initiation. Results will be available with /getResult
+            request
+        "400":
+          description: Invalid input
+        "500":
+          description: Computation Error
+      x-openapi-router-controller: swagger_server.controllers.external_calls_controller
+  /hello:
+    get:
+      tags:
+      - interaction
+      summary: hello message to neighbour
+      description: Returns hello message
+      operationId: hello
+      responses:
+        "200":
+          description: Neighbour detected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+              example:
+                hello: Hello
+        "500":
+          description: Neighbour is not alive
+      x-openapi-router-controller: swagger_server.controllers.interaction_controller
+  /getResult:
+    get:
+      tags:
+      - externalCalls
+      summary: returns calculated with 2PC result
+      description: Returns the result of computation on config with A & B inputs
+      operationId: get_result
+      responses:
+        "200":
+          description: Result was correct
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Answer'
+                x-content-type: application/json
+              example:
+                result: 102
+        "404":
+          description: Calculation is still in process or hasn't been initiated
+        "500":
+          description: Something went wrong in 2PC e2e
+      x-openapi-router-controller: swagger_server.controllers.external_calls_controller
+components:
+  schemas:
+    Table:
+      type: object
+      format: json
+      example:
+        config:
+          numOfLinks:
+          - "292"
+          numOfNodes:
+          - "125"
+          masksBitness:
+          - "32"
+          inputMasks:
+          - "12"
+          outputMasks:
+          - "24"
+        node1:
+          inn: 2
+          out: 1
+          inList:
+          - "51"
+          - "50"
+          outList:
+          - "12261"
+          operation:
+          - "0"
+          - "1"
+          - "1"
+          - "0"
+    ExchangePayload:
+      properties:
+        startIndex:
+          type: integer
+        outDecNumber:
+          type: integer
+      example:
+        startIndex: 54
+        outArray: 12
+    Answer:
+      properties:
+        result:
+          type: integer
+      example:
+        result: 102
+    Init:
+      type: object
+      properties:
+        inputNumber:
+          type: integer
+        config:
+          type: string
+      example:
+        inputNumber: 54
+        configLocation: config.txt
+    inline_response_200:
+      type: object
+      properties:
+        hello:
+          type: string
+      example:
+        hello: hello
+  examples:
+    exchangePayloadExample:
+      summary: Calculated layer example in Decimal representation
+      value:
+        startIndex: 54
+        outArray: 12
+    preprocessedTableExample:
+      summary: Preprocessed table example
+      value:
+        config:
+          numOfLinks:
+          - "292"
+          numOfNodes:
+          - "125"
+          masksBitness:
+          - "32"
+          inputMasks:
+          - "12"
+          outputMasks:
+          - "24"
+        node1:
+          inn: 2
+          out: 1
+          inList:
+          - "51"
+          - "50"
+          outList:
+          - "12261"
+          operation:
+          - "0"
+          - "1"
+          - "1"
+          - "0"
+  requestBodies:
+    ExchangePayload:
+      description: calculated payload to send to neighbour in Decimal representation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExchangePayload'
+    Init:
+      description: Client sensitive data
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/Init'
+
