@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client_pre
-from swagger_client_pre.models.table import Table  # noqa: E501
-from swagger_client_pre.rest import ApiException
+import swagger_client
+from swagger_client.models.table import Table  # noqa: E501
+from swagger_client.rest import ApiException
 
 
 class TestTable(unittest.TestCase):

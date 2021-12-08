@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    User exchange API
+    Preprocessor API
 
-    User exchange API  # noqa: E501
+    This is MIPT-2PC preprocessor API  # noqa: E501
 
     OpenAPI spec version: 1.0.0
     Contact: prokhorov.va@phystech.edu

@@ -1,4 +1,4 @@
-# swagger_client_pre.PreprocessorApi
+# swagger_client.PreprocessorApi
 
 All URIs are relative to *http://localhost:8080/MIPT-2PC/preprocessor/1.0.0*
 
@@ -18,12 +18,12 @@ Returns preprocessed table for this user, masked input and outputs
 ```python
 from __future__ import print_function
 import time
-import swagger_client_pre
-from swagger_client_pre.rest import ApiException
+import swagger_client
+from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client_pre.PreprocessorApi()
+api_instance = swagger_client.PreprocessorApi()
 
 try:
     # hello message to get preprocessed data
@@ -62,13 +62,13 @@ send config file to start preprocessing
 ```python
 from __future__ import print_function
 import time
-import swagger_client_pre
-from swagger_client_pre.rest import ApiException
+import swagger_client
+from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client_pre.PreprocessorApi()
-body = swagger_client_pre.Table() # Table | Nums request body (optional)
+api_instance = swagger_client.PreprocessorApi()
+body = swagger_client.Table() # Table | Nums request body (optional)
 
 try:
     # start preprocessing procedure

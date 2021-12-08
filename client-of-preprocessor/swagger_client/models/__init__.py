@@ -1,7 +1,6 @@
 # coding: utf-8
 
 # flake8: noqa
-
 """
     Preprocessor API
 
@@ -14,10 +13,9 @@
 
 from __future__ import absolute_import
 
-# import apis into sdk package
-from swagger_client_pre.api.preprocessor_api import PreprocessorApi
-# import ApiClient
-from swagger_client_pre.api_client import ApiClient
-from swagger_client_pre.configuration import Configuration
-# import models into sdk package
+# import models into model package
+<<<<<<< HEAD:client-of-preprocessor/swagger_client_pre/models/__init__.py
 from swagger_client_pre.models.table import Table
+=======
+from swagger_client.models.table import Table
+>>>>>>> dc234be97aeebc8f19b6f397789ae22d154cd876:client-of-preprocessor/swagger_client/models/__init__.py
