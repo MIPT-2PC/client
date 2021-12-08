@@ -38,16 +38,6 @@ def init(input_number=None, config=None):  # noqa: E501
     """
 
     if os.getenv('CLIENT_A', None) is not None:
-        api_instance = swagger_client.InteractionApi()
-        try:
-            # returns calculated with 2PC result
-            api_response = api_instance.hello()
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling ExternalCallsApi->get_result: %s\n" % e)
-
-
-
         print(connexion.request.form.get("inputNumber"))
 
         for i in connexion.request.files:
@@ -64,6 +54,14 @@ def init(input_number=None, config=None):  # noqa: E501
 
         SendToPreprocessorRoutineInst = SendToPreprocessorRoutine()
         SendToPreprocessorRoutineInst.start(ConfigUploaderInst.dataToTransfer)
+
+        api_instance = swagger_client.InteractionApi()
+        try:
+            api_response = api_instance.hello()
+            print(api_response)
+        except ApiException as e:
+            print("Exception when calling ExternalCallsApi->get_result: %s\n" % e)
+
         return "Success initiation. Results will be available with /getResult request", 200
 
-    return "do some magic!", 200
+    return "This is not Adversary (ClientA)", 500

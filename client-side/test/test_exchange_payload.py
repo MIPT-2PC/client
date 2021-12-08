@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.exchange_payload import ExchangePayload  # noqa: E501
-from swagger_client.rest import ApiException
+import swagger_client_pre
+from swagger_client_pre.models.exchange_payload import ExchangePayload  # noqa: E501
+from swagger_client_pre.rest import ApiException
 
 
 class TestExchangePayload(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestExchangePayload(unittest.TestCase):
     def testExchangePayload(self):
         """Test ExchangePayload"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client_pre.models.exchange_payload.ExchangePayload()  # noqa: E501
+        # model = swagger_client_pre_pre.models.exchange_payload.ExchangePayload()  # noqa: E501
         pass
 
 

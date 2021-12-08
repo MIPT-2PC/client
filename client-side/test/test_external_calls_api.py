@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.api.external_calls_api import ExternalCallsApi  # noqa: E501
-from swagger_client.rest import ApiException
+import swagger_client_pre
+from swagger_client_pre.api.external_calls_api import ExternalCallsApi  # noqa: E501
+from swagger_client_pre.rest import ApiException
 
 
 class TestExternalCallsApi(unittest.TestCase):

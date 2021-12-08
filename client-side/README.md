@@ -23,7 +23,7 @@ pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 
 Then import the package:
 ```python
-import swagger_client 
+import swagger_client_pre 
 ```
 
 ### Setuptools
@@ -37,7 +37,7 @@ python setup.py install --user
 
 Then import the package:
 ```python
-import swagger_client
+import swagger_client_pre
 ```
 
 ## Getting Started
@@ -47,12 +47,12 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import swagger_client_pre
+from swagger_client_pre.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.ExternalCallsApi(swagger_client.ApiClient(configuration))
+api_instance = swagger_client_pre.ExternalCallsApi(swagger_client_pre.ApiClient(configuration))
 
 try:
     # returns calculated with 2PC result
@@ -62,7 +62,7 @@ except ApiException as e:
     print("Exception when calling ExternalCallsApi->get_result: %s\n" % e)
 
 # create an instance of the API class
-api_instance = swagger_client.ExternalCallsApi(swagger_client.ApiClient(configuration))
+api_instance = swagger_client_pre.ExternalCallsApi(swagger_client_pre.ApiClient(configuration))
 input_number = 56 # int |  (optional)
 config = 'config_example' # str |  (optional)
 

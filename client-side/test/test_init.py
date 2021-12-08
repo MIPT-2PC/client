@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.init import Init  # noqa: E501
-from swagger_client.rest import ApiException
+import swagger_client_pre
+from swagger_client_pre.models.init import Init  # noqa: E501
+from swagger_client_pre.rest import ApiException
 
 
 class TestInit(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestInit(unittest.TestCase):
     def testInit(self):
         """Test Init"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client_pre.models.init.Init()  # noqa: E501
+        # model = swagger_client_pre_pre.models.init.Init()  # noqa: E501
         pass
 
 
