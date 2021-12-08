@@ -15,7 +15,7 @@ def main():
         cliPort = os.getenv('CLIENT_A', None)
     if os.getenv('CLIENT_B', None) is not None:
         cliPort = os.getenv('CLIENT_B', None)
-    app.run(port=int(cliPort), threaded=True)
+    app.run(port=int(cliPort))
 
 
 if __name__ == '__main__':
