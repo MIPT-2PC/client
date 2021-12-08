@@ -6,11 +6,13 @@ from swagger_server.models.init import Init  # noqa: E501
 from swagger_server import util
 from .service.config_uploader import ConfigUploader
 from .service.init_routine import *
+from .service.calculation_routine import *
 import os
 
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+from flask import Response
 
 
 def get_result():  # noqa: E501
@@ -21,7 +23,7 @@ def get_result():  # noqa: E501
 
     :rtype: List[Answer]
     """
-    return 'do some magic!'
+    return [Answer(result=CalculationRoutineInst.list.pop())], 200
 
 
 def init(input_number=None, config=None):  # noqa: E501
@@ -40,28 +42,37 @@ def init(input_number=None, config=None):  # noqa: E501
     if os.getenv('CLIENT_A', None) is not None:
         print(connexion.request.form.get("inputNumber"))
 
-        for i in connexion.request.files:
-            print(i)
-
         file = connexion.request.files['config']
         file.save('./config.scheme')
 
-        with open('./config.scheme') as file:
-            for line in file:
-                print(line)
+        print("ClientA started processing config file")
 
         ConfigUploaderInst = ConfigUploader('./config.scheme')
+
+        print("ClientA processed config file")
+
+        print("ClientA is ready to send config to server")
+
 
         SendToPreprocessorRoutineInst = SendToPreprocessorRoutine()
         SendToPreprocessorRoutineInst.start(ConfigUploaderInst.dataToTransfer)
 
+        print("ClientA should have preprocessed table here and begin some computations on them")
+
+        print("ClientA send hello message to ClientB")
         api_instance = swagger_client.InteractionApi()
         try:
             api_response = api_instance.hello()
+            print("ClientA got message from ClientB:")
             print(api_response)
         except ApiException as e:
             print("Exception when calling ExternalCallsApi->get_result: %s\n" % e)
 
-        return "Success initiation. Results will be available with /getResult request", 200
+        def generate():
+            yield "Success initiation. Results will be available with /getResult request"
+            CalculationRoutineInst.start(SendToPreprocessorRoutineInst.ClientA_Response)
+            yield ''
+        return Response(generate(), mimetype='application/json'), 200
 
+    print("ClientB tried to call init()")
     return "This is not Adversary (ClientA)", 500

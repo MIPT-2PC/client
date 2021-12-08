@@ -8,6 +8,9 @@ from swagger_server import util
 from .service.init_routine import *
 from .service.calculation_routine import *
 import os
+import time
+import threading
+from flask import Response
 from threading import Thread
 from queue import Queue
 
@@ -24,8 +27,8 @@ def exchange_out(body=None):  # noqa: E501
     """
     if connexion.request.is_json:
         body = ExchangePayload.from_dict(connexion.request.get_json())  # noqa: E501
-    CalculationRoutineInst.q.put((body.start_index, body.out_dec_number))
-    position, result = CalculationRoutineInst.q.get()
+    #CalculationRoutineInst.q.put((body.start_index, body.out_dec_number))
+    position, result = CalculationRoutineInst.answer.get()
     return [ExchangePayload(start_index=position, out_dec_number=result)], 200
 
 
@@ -39,11 +42,20 @@ def hello():  # noqa: E501
     """
 
     if os.getenv('CLIENT_B', None) is not None:
+
+        print("ClientB get hello message from ClientA")
+        print("ClientB send message to Preprocessor")
         SendToPreprocessorRoutineInst = SendToPreprocessorRoutine()
         SendToPreprocessorRoutineInst.start()
+        print("ClientB got reply from server and now starts calculation routine")
 
-        CalculationRoutineInst = CalculationRoutine()
-        CalculationRoutineInst.start(SendToPreprocessorRoutineInst.ClientB_Response)
+        def long_running_task(**kwargs):
+            your_params = kwargs.get('post_data', {})
+            CalculationRoutineInst.start(your_params)
+
+        thread = threading.Thread(target=long_running_task, kwargs={'post_data': SendToPreprocessorRoutineInst.ClientB_Response})
+        thread.start()
 
         return InlineResponse200(hello="Hello, OK"), 200
+
     return '', 204
