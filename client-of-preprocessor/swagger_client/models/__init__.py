@@ -14,4 +14,4 @@
 from __future__ import absolute_import
 
 # import models into model package
-from swagger_client_pre.models.table import Table
+from swagger_client.models.table import Table
