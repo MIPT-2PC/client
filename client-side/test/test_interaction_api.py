@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client_pre
-from swagger_client_pre.api.interaction_api import InteractionApi  # noqa: E501
-from swagger_client_pre.rest import ApiException
+import swagger_client
+from swagger_client.api.interaction_api import InteractionApi  # noqa: E501
+from swagger_client.rest import ApiException
 
 
 class TestInteractionApi(unittest.TestCase):

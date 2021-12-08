@@ -1,10 +1,8 @@
-<<<<<<< Updated upstream:client-side/swagger_client/configuration.py
-=======
 # coding: utf-8
 
 """
     User exchange API
-    # Patched by ProValdi
+
     User exchange API  # noqa: E501
 
     OpenAPI spec version: 1.0.0
@@ -23,7 +21,6 @@ import urllib3
 import six
 from six.moves import http_client as httplib
 
-import os
 
 class TypeWithDefault(type):
     def __init__(cls, name, bases, dct):
@@ -48,11 +45,8 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
 
     def __init__(self):
         """Constructor"""
-        # Default Base url, CLIENT_A = 8080, CLIENT_B = 8081, NEIGHBOR_PORT = CURRENT_CLIENT_A? CLIENT_B:CLIENT_A
-        if os.getenv("CLIENT_A", None) is not None:
-            self.host = "http://localhost:"+os.getenv("NEIGHBOR_PORT")+"/MIPT-2PC/user/1.0.0"
-        if os.getenv("CLIENT_B", None) is not None:
-            self.host = "http://localhost:"+os.getenv("NEIGHBOR_PORT")+"/MIPT-2PC/user/1.0.0"
+        # Default Base url
+        self.host = "http://localhost:8080/MIPT-2PC/user/1.0.0"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 
@@ -69,7 +63,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         self.password = ""
         # Logging Settings
         self.logger = {}
-        self.logger["package_logger"] = logging.getLogger("swagger_client_pre_pre")
+        self.logger["package_logger"] = logging.getLogger("swagger_client")
         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
         # Log format
         self.logger_format = '%(asctime)s %(levelname)s %(message)s'
@@ -248,4 +242,3 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
                "Version of the API: 1.0.0\n"\
                "SDK Package Version: 1.0.0".\
                format(env=sys.platform, pyversion=sys.version)
->>>>>>> Stashed changes:client-side/swagger_client_pre/configuration.py
