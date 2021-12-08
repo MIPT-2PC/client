@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 
-from swagger_client.api_client import ApiClient
+from swagger_client_pre.api_client import ApiClient
 
 
 class PreprocessorApi(object):
