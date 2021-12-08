@@ -1,15 +1,19 @@
---- configuration_old.py	2021-12-08 00:01:43.664772934 +0300
-+++ configuration.py	2021-12-07 23:59:17.466735631 +0300
-@@ -2,7 +2,7 @@
- 
- """
-     User exchange API
+--- config_old.py	2021-12-08 12:57:17.401154090 +0300
++++ configuration.py	2021-12-08 12:56:32.812466368 +0300
+@@ -1,9 +1,7 @@
+-# coding: utf-8
 -
+ """
+-    Preprocessor API
+-
+-    This is MIPT-2PC preprocessor API  # noqa: E501
++    User exchange API
 +    # Patched by ProValdi
-     User exchange API  # noqa: E501
++    User exchange API  # noqa: E501
  
      OpenAPI spec version: 1.0.0
-@@ -21,6 +21,7 @@
+     Contact: prokhorov.va@phystech.edu
+@@ -21,6 +19,7 @@
  import six
  from six.moves import http_client as httplib
  
@@ -17,23 +21,23 @@
  
  class TypeWithDefault(type):
      def __init__(cls, name, bases, dct):
-@@ -45,6 +46,11 @@
- 
+@@ -46,7 +45,11 @@
      def __init__(self):
          """Constructor"""
+         # Default Base url
+-        self.host = "http://localhost:8080/MIPT-2PC/preprocessor/1.0.0"
 +        # Default Base url, CLIENT_A = 8080, CLIENT_B = 8081, NEIGHBOR_PORT = CURRENT_CLIENT_A? CLIENT_B:CLIENT_A
 +        if os.getenv("CLIENT_A", None) is not None:
-+            self.host = "http://localhost:"+os.getenv("NEIGHBOR_PORT")+"/MIPT-2PC/user/1.0.0"
++            self.host = "http://localhost:" + os.getenv("NEIGHBOR_PORT") + "/MIPT-2PC/user/1.0.0"
 +        if os.getenv("CLIENT_B", None) is not None:
-+            self.host = "http://localhost:"+os.getenv("NEIGHBOR_PORT")+"/MIPT-2PC/user/1.0.0"
++            self.host = "http://localhost:" + os.getenv("NEIGHBOR_PORT") + "/MIPT-2PC/user/1.0.0"
          # Temp file folder for downloading files
          self.temp_folder_path = None
  
-@@ -61,6 +67,7 @@
-         self.password = ""
-         # Logging Settings
-         self.logger = {}
-+        self.logger["package_logger"] = logging.getLogger("swagger_client")
-         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
-         # Log format
-         self.logger_format = '%(asctime)s %(levelname)s %(message)s'
+@@ -241,4 +244,4 @@
+                "Python Version: {pyversion}\n"\
+                "Version of the API: 1.0.0\n"\
+                "SDK Package Version: 1.0.0".\
+-               format(env=sys.platform, pyversion=sys.version)
+\ В конце файла нет новой строки
++               format(env=sys.platform, pyversion=sys.version)
