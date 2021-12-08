@@ -45,10 +45,14 @@ jobs:
       if: always()
       run: |
         echo "patching __main__.py"
-        patch server-side/swagger_server/__main__.py < server-side/__main__.patch
+        if ! grep -q "Patched by ProValdi" "server-side/swagger_server/__main__.py"; then
+          patch server-side/swagger_server/__main__.py < server-side/__main__.patch
+        fi
     - name: patch configuration.py
       if: always()
       run: |
         echo "patching configuration.py"
-        patch --force client-side/swagger_client/configuration.py < ./__configuration__.patch
+        if ! grep -q "Patched by ProValdi" "client-side/swagger_client/configuration.py"; then
+          patch client-side/swagger_client/configuration.py < ./__configuration__.patch
+        fi
     - uses: stefanzweifel/git-auto-commit-action@v4 # commiting changes

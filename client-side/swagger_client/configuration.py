@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
     User exchange API
     # Patched by ProValdi
@@ -20,6 +22,7 @@ import six
 from six.moves import http_client as httplib
 
 import os
+
 
 class TypeWithDefault(type):
     def __init__(cls, name, bases, dct):
