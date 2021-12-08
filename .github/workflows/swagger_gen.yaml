@@ -50,5 +50,5 @@ jobs:
       if: always()
       run: |
         echo "patching configuration.py"
-        patch client-side/swagger_client/configuration.py < ./__configuration__.patch
+        patch --force client-side/swagger_client/configuration.py < ./__configuration__.patch
     - uses: stefanzweifel/git-auto-commit-action@v4 # commiting changes
