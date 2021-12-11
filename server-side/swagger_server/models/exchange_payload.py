@@ -14,25 +14,30 @@ class ExchangePayload(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, start_index: int=None, out_dec_number: int=None):  # noqa: E501
+    def __init__(self, start_index: int=None, out_dec_number: int=None, end_index: int=None):  # noqa: E501
         """ExchangePayload - a model defined in Swagger
 
         :param start_index: The start_index of this ExchangePayload.  # noqa: E501
         :type start_index: int
         :param out_dec_number: The out_dec_number of this ExchangePayload.  # noqa: E501
         :type out_dec_number: int
+        :param end_index: The end_index of this ExchangePayload.  # noqa: E501
+        :type end_index: int
         """
         self.swagger_types = {
             'start_index': int,
-            'out_dec_number': int
+            'out_dec_number': int,
+            'end_index': int
         }
 
         self.attribute_map = {
             'start_index': 'startIndex',
-            'out_dec_number': 'outDecNumber'
+            'out_dec_number': 'outDecNumber',
+            'end_index': 'endIndex'
         }
         self._start_index = start_index
         self._out_dec_number = out_dec_number
+        self._end_index = end_index
 
     @classmethod
     def from_dict(cls, dikt) -> 'ExchangePayload':
@@ -86,3 +91,24 @@ class ExchangePayload(Model):
         """
 
         self._out_dec_number = out_dec_number
+
+    @property
+    def end_index(self) -> int:
+        """Gets the end_index of this ExchangePayload.
+
+
+        :return: The end_index of this ExchangePayload.
+        :rtype: int
+        """
+        return self._end_index
+
+    @end_index.setter
+    def end_index(self, end_index: int):
+        """Sets the end_index of this ExchangePayload.
+
+
+        :param end_index: The end_index of this ExchangePayload.
+        :type end_index: int
+        """
+
+        self._end_index = end_index

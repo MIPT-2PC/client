@@ -17,7 +17,7 @@ import re  # noqa: F401
 # python 2 and python 3 compatibility library
 import six
 
-from swagger_client_pre_pre_pre.api_client import ApiClient
+from swagger_client_pre_pre_pre_pre.api_client import ApiClient
 
 
 class PreprocessorApi(object):
