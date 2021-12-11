@@ -29,23 +29,28 @@ class ExchangePayload(object):
     """
     swagger_types = {
         'start_index': 'int',
-        'out_dec_number': 'int'
+        'out_dec_number': 'int',
+        'end_index': 'int'
     }
 
     attribute_map = {
         'start_index': 'startIndex',
-        'out_dec_number': 'outDecNumber'
+        'out_dec_number': 'outDecNumber',
+        'end_index': 'endIndex'
     }
 
-    def __init__(self, start_index=None, out_dec_number=None):  # noqa: E501
+    def __init__(self, start_index=None, out_dec_number=None, end_index=None):  # noqa: E501
         """ExchangePayload - a model defined in Swagger"""  # noqa: E501
         self._start_index = None
         self._out_dec_number = None
+        self._end_index = None
         self.discriminator = None
         if start_index is not None:
             self.start_index = start_index
         if out_dec_number is not None:
             self.out_dec_number = out_dec_number
+        if end_index is not None:
+            self.end_index = end_index
 
     @property
     def start_index(self):
@@ -88,6 +93,27 @@ class ExchangePayload(object):
         """
 
         self._out_dec_number = out_dec_number
+
+    @property
+    def end_index(self):
+        """Gets the end_index of this ExchangePayload.  # noqa: E501
+
+
+        :return: The end_index of this ExchangePayload.  # noqa: E501
+        :rtype: int
+        """
+        return self._end_index
+
+    @end_index.setter
+    def end_index(self, end_index):
+        """Sets the end_index of this ExchangePayload.
+
+
+        :param end_index: The end_index of this ExchangePayload.  # noqa: E501
+        :type: int
+        """
+
+        self._end_index = end_index
 
     def to_dict(self):
         """Returns the model properties as a dict"""
