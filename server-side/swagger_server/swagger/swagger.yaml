@@ -23,7 +23,7 @@ paths:
       - interaction
       summary: Exchange calculated nodes with self table from Nth layer
       description: Exchange calculated nodes with self table from Nth layer
-      operationId: exchange_out
+      operationId: exchangeOut
       requestBody:
         $ref: '#/components/requestBodies/ExchangePayload'
       responses:
@@ -43,7 +43,6 @@ paths:
           description: Invalid payload
         "500":
           description: Computation Error
-      x-openapi-router-controller: swagger_server.controllers.interaction_controller
   /init:
     post:
       tags:
@@ -61,7 +60,6 @@ paths:
           description: Invalid input
         "500":
           description: Computation Error
-      x-openapi-router-controller: swagger_server.controllers.external_calls_controller
   /hello:
     get:
       tags:
@@ -80,14 +78,13 @@ paths:
                 hello: Hello
         "500":
           description: Neighbour is not alive
-      x-openapi-router-controller: swagger_server.controllers.interaction_controller
   /getResult:
     get:
       tags:
       - externalCalls
       summary: returns calculated with 2PC result
       description: Returns the result of computation on config with A & B inputs
-      operationId: get_result
+      operationId: getResult
       responses:
         "200":
           description: Result was correct
@@ -97,14 +94,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Answer'
-                x-content-type: application/json
               example:
                 result: 102
         "404":
           description: Calculation is still in process or hasn't been initiated
         "500":
           description: Something went wrong in 2PC e2e
-      x-openapi-router-controller: swagger_server.controllers.external_calls_controller
 components:
   schemas:
     Table:
@@ -141,9 +136,12 @@ components:
           type: integer
         outDecNumber:
           type: integer
+        endIndex:
+          type: integer
       example:
-        startIndex: 54
+        startIndex: 0
         outArray: 12
+        endIndex: 67
     Answer:
       properties:
         result:
@@ -165,14 +163,13 @@ components:
       properties:
         hello:
           type: string
-      example:
-        hello: hello
   examples:
     exchangePayloadExample:
       summary: Calculated layer example in Decimal representation
       value:
-        startIndex: 54
+        startIndex: 0
         outArray: 12
+        endIndex: 67
     preprocessedTableExample:
       summary: Preprocessed table example
       value:
@@ -213,4 +210,3 @@ components:
         multipart/form-data:
           schema:
             $ref: '#/components/schemas/Init'
-
