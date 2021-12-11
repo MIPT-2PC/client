@@ -82,6 +82,7 @@ def init(input_number=None, config=None):  # noqa: E501
         try:
             api_response = api_instance.exchange_out(body=body)
             CalculationRoutineInst.maskedInputNeighbour = api_response[0].out_dec_number
+            CalculationRoutineInst.maskedInputSelf = maskedInput
             print("ClientA got masked input from ClientB:")
             print(api_response)
         except ApiException as e:
@@ -91,7 +92,8 @@ def init(input_number=None, config=None):  # noqa: E501
         def generate():
             yield "Success initiation. Results will be available with /getResult request"
             CalculationRoutineInst.start({'config': SendToPreprocessorRoutineInst.config,
-                                          'nodes': SendToPreprocessorRoutineInst.nodes})
+                                          'nodes': SendToPreprocessorRoutineInst.nodes,
+                                          })
             yield ''
         return Response(generate(), mimetype='application/json'), 200
 

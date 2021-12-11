@@ -32,6 +32,7 @@ def exchange_out(body=None):  # noqa: E501
         print("ClientB init exchange begin")
         CalculationRoutineInst.maskedInputNeighbour = body.out_dec_number
         result = SendToPreprocessorRoutineInst.inputNumber ^ SendToPreprocessorRoutineInst.inputMasks
+        CalculationRoutineInst.maskedInputSelf = result
         SendToPreprocessorRoutineInst.gotMaskedInput = True
         print("ClientB init exchange is done")
         return [ExchangePayload(start_index=0, out_dec_number=result)], 200
@@ -58,15 +59,15 @@ def hello():  # noqa: E501
         SendToPreprocessorRoutineInst.start()
         print("ClientB got reply from server and now starts calculation routine")
 
-        if os.getenv('CLIENT_B', None) is not None:
-            def long_running_task(**kwargs):
-                params = kwargs.get('post_data', {})
-                while not SendToPreprocessorRoutineInst.gotMaskedInput:
-                    continue
-                CalculationRoutineInst.start(params)
+        def long_running_task(**kwargs):
+            params = kwargs.get('post_data', {})
+            while not SendToPreprocessorRoutineInst.gotMaskedInput:
+                continue
+            CalculationRoutineInst.start(params)
 
         thread = threading.Thread(target=long_running_task, kwargs={'config': SendToPreprocessorRoutineInst.config,
-                                                                    'nodes': SendToPreprocessorRoutineInst.nodes})
+                                                                    'nodes': SendToPreprocessorRoutineInst.nodes,
+                                                                    })
         thread.start()
 
         return InlineResponse200(hello="Hello, OK"), 200

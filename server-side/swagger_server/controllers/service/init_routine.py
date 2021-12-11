@@ -30,6 +30,8 @@ class SendToPreprocessorRoutine:
     inputNumber = None
     Response_nodes = []
     gotMaskedInput = False
+    maskedInputLocal = 0
+    maskedInputNeighbour = 0
 
     if os.getenv('CLIENT_A', None) is not None:
         adversary = True
