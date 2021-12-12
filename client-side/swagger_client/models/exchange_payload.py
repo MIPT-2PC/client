@@ -29,26 +29,26 @@ class ExchangePayload(object):
     """
     swagger_types = {
         'start_index': 'int',
-        'out_dec_number': 'int',
+        'filled_links': 'object',
         'end_index': 'int'
     }
 
     attribute_map = {
         'start_index': 'startIndex',
-        'out_dec_number': 'outDecNumber',
+        'filled_links': 'filledLinks',
         'end_index': 'endIndex'
     }
 
-    def __init__(self, start_index=None, out_dec_number=None, end_index=None):  # noqa: E501
+    def __init__(self, start_index=None, filled_links=None, end_index=None):  # noqa: E501
         """ExchangePayload - a model defined in Swagger"""  # noqa: E501
         self._start_index = None
-        self._out_dec_number = None
+        self._filled_links = None
         self._end_index = None
         self.discriminator = None
         if start_index is not None:
             self.start_index = start_index
-        if out_dec_number is not None:
-            self.out_dec_number = out_dec_number
+        if filled_links is not None:
+            self.filled_links = filled_links
         if end_index is not None:
             self.end_index = end_index
 
@@ -74,25 +74,25 @@ class ExchangePayload(object):
         self._start_index = start_index
 
     @property
-    def out_dec_number(self):
-        """Gets the out_dec_number of this ExchangePayload.  # noqa: E501
+    def filled_links(self):
+        """Gets the filled_links of this ExchangePayload.  # noqa: E501
 
 
-        :return: The out_dec_number of this ExchangePayload.  # noqa: E501
-        :rtype: int
+        :return: The filled_links of this ExchangePayload.  # noqa: E501
+        :rtype: object
         """
-        return self._out_dec_number
+        return self._filled_links
 
-    @out_dec_number.setter
-    def out_dec_number(self, out_dec_number):
-        """Sets the out_dec_number of this ExchangePayload.
+    @filled_links.setter
+    def filled_links(self, filled_links):
+        """Sets the filled_links of this ExchangePayload.
 
 
-        :param out_dec_number: The out_dec_number of this ExchangePayload.  # noqa: E501
-        :type: int
+        :param filled_links: The filled_links of this ExchangePayload.  # noqa: E501
+        :type: object
         """
 
-        self._out_dec_number = out_dec_number
+        self._filled_links = filled_links
 
     @property
     def end_index(self):
