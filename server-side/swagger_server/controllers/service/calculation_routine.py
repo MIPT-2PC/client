@@ -70,14 +70,20 @@ class CalculationRoutine:
                 if len(node.inList) == 2:
                     if (self.globalLinks[int(node.inList[0])] is not None) and (self.globalLinks[int(node.inList[1])] is not None) and (self.globalLinks[int(node.outList[0])] is None):
                         logicUnitCell = self.gateLogicIndex(self.globalLinks[int(node.inList[0])], self.globalLinks[int(node.inList[1])])
-                        answerDict[int(node.outList[0])] = int(node.operation[int(logicUnitCell)])
+                        localAnswer = int(node.operation[int(logicUnitCell)])
+                        checkHash = int(node.selfHash[int(logicUnitCell)])
+                        if os.getenv('CLIENT_B', None) is not None:
+                            if k == 20:
+                                pass
+                                # localAnswer = 1 if localAnswer == 0 else 1
+                        answerDict[int(node.outList[0])] = (localAnswer,  checkHash, k, int(logicUnitCell))
 
                 if len(node.inList) == 1:
                     if (self.globalLinks[int(node.inList[0])] is not None) and (self.globalLinks[int(node.outList[0])] is None):
                         logicUnitCell = self.gateLogicIndex(self.globalLinks[int(node.inList[0])], self.globalLinks[int(node.inList[0])])
-                        if int(logicUnitCell) == 1 or int(logicUnitCell) == 2:
-                            print("BITCH ASS")
-                        answerDict[int(node.outList[0])] = int(node.operation[int(logicUnitCell)])
+                        localAnswer = int(node.operation[int(logicUnitCell)])
+                        checkHash = int(node.selfHash[int(logicUnitCell)])
+                        answerDict[int(node.outList[0])] = (localAnswer, checkHash, k, int(logicUnitCell))
             self.answer.put(answerDict)
 
             api_instance = swagger_client.InteractionApi()
@@ -93,7 +99,24 @@ class CalculationRoutine:
 
             #print("filling global links with xoring answerDict and neighbourDict by the same keys")
             for key in neighbourDict:
-                self.globalLinks[int(key)] = answerDict.get(int(key)) ^ neighbourDict.get(key)
+                print(key)
+                if neighbourDict.get(key)[0] == 0:
+                    if neighbourDict.get(key)[1] != response['nodes'][answerDict.get(int(key))[2]].neiHash.bit0[answerDict.get(int(key))[3]]:
+                        print(neighbourDict.get(key))
+                        print(answerDict.get(int(key)))
+                        print(response['nodes'][answerDict.get(int(key))[2]])
+                        print("THERE WAS A SCAM!!! 0 is wrong")
+                        return -10
+                if neighbourDict.get(key)[0] == 1:
+                    if neighbourDict.get(key)[1] != response['nodes'][answerDict.get(int(key))[2]].neiHash.bit1[answerDict.get(int(key))[3]]:
+                        print(neighbourDict.get(key))
+                        print(answerDict.get(int(key)))
+                        print(response['nodes'][answerDict.get(int(key))[2]])
+                        print("THERE WAS A SCAM!!! 1 is wrong")
+                        return -11
+                self.globalLinks[int(key)] = answerDict.get(int(key))[0] ^ neighbourDict.get(key)[0]
+
+
             print("вычисленный первый слой А:")
             print(answerDict)
             print("вычисленный первый слой В:")
