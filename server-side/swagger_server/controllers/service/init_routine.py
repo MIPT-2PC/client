@@ -37,7 +37,8 @@ class SendToPreprocessorRoutine:
     if os.getenv('CLIENT_A', None) is not None:
         adversary = True
     if os.getenv('CLIENT_B', None) is not None:
-        inputNumber = 94  # клиент B должен иметь свой API, а я его забыл написать(((
+        if os.getenv('CLIENT_B_NUMBER', None) is not None:
+            inputNumber = int(os.getenv('CLIENT_B_NUMBER', None))  # клиент B должен иметь свой API, а я его забыл написать(((
         adversary = False
 
     def __init__(self):
