@@ -11,6 +11,7 @@ class CalculationRoutine:
 
     maskedInputNeighbour = None
     maskedInputSelf = None
+    resultBitness = None
 
     result = 0
     globalLinks = [None]
@@ -21,10 +22,6 @@ class CalculationRoutine:
     def __init__(self):
         self.q = Queue()
         self.answer = Queue()
-
-        self.q.put((7, 1))
-        for i in range(8):
-            self.result[i] = 255 >> i & 1
 
     def start(self, response):
         if os.getenv('CLIENT_A', None) is not None:
@@ -47,7 +44,7 @@ class CalculationRoutine:
     def calculator(self, response):
         print("CALCULATOR STARTED")
         print(response['config'])
-        print(response['resultBitness'])
+        print(self.resultBitness)
 
         self.globalLinks = [None] * int(response['config'].numOfLinks)
 
@@ -111,37 +108,39 @@ class CalculationRoutine:
         # print("output masks")
         #print("{0:b}".format(int(response['config'].outputMasks)))
 
+        reversedMasksAsDesigned = ""
+        for i in range(int(self.resultBitness)):
+            reversedMasksAsDesigned = reversedMasksAsDesigned + str(int(response['config'].outputMasks) >> i & 1)
+
         reversedMasks = format(int(response['config'].outputMasks), '34b')[::-1]
         #print("reversed output masks")
         #print(reversedMasks)
 
         stri = ""
         for i in reversed(range(int(response['config'].numOfLinks))):
-            if i < int(response['config'].numOfLinks) - int(response['resultBitness']):
+            if i < int(response['config'].numOfLinks) - int(self.resultBitness):
                 break
             stri = str(self.globalLinks[i]) + stri
-
-        print("answer")
-        print(stri)
-
-        out = int(stri, 2)
-        print(out)
-
         reversedAnswer = stri[::-1]
 
-        #print("reversed masks")
-        #print(reversedMasks)
-        #print("reversed output")
-        #print(reversedAnswer)
+        print("reversed masks")
+        print(reversedMasksAsDesigned)
+        print("reversed output")
+        print(reversedAnswer)
 
-        A = int(reversedMasks, 2)
+        A = int(reversedMasksAsDesigned, 2)
         B = int(reversedAnswer, 2)
 
-        answerYopta = A^B
+        answer = A^B
 
-        print("answer is:")
-        print(answerYopta)
+        print("Finally, answer is:")
+        print("{0:b}".format(answer))
 
+        #if answer >> (int(self.resultBitness)-1) == 1:
+        #    answer &= ~(1 << (int(self.resultBitness)-1))
+        print(answer)
+
+        self.result = answer
         self.clearLocalData()
 
     def clearLocalData(self):

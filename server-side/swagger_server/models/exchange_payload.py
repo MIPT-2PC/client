@@ -14,25 +14,30 @@ class ExchangePayload(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, start_index: int=None, out_dec_number: int=None):  # noqa: E501
+    def __init__(self, start_index: int=None, filled_links: object=None, end_index: int=None):  # noqa: E501
         """ExchangePayload - a model defined in Swagger
 
         :param start_index: The start_index of this ExchangePayload.  # noqa: E501
         :type start_index: int
-        :param out_dec_number: The out_dec_number of this ExchangePayload.  # noqa: E501
-        :type out_dec_number: int
+        :param filled_links: The filled_links of this ExchangePayload.  # noqa: E501
+        :type filled_links: object
+        :param end_index: The end_index of this ExchangePayload.  # noqa: E501
+        :type end_index: int
         """
         self.swagger_types = {
             'start_index': int,
-            'out_dec_number': int
+            'filled_links': object,
+            'end_index': int
         }
 
         self.attribute_map = {
             'start_index': 'startIndex',
-            'out_dec_number': 'outDecNumber'
+            'filled_links': 'filledLinks',
+            'end_index': 'endIndex'
         }
         self._start_index = start_index
-        self._out_dec_number = out_dec_number
+        self._filled_links = filled_links
+        self._end_index = end_index
 
     @classmethod
     def from_dict(cls, dikt) -> 'ExchangePayload':
@@ -67,22 +72,43 @@ class ExchangePayload(Model):
         self._start_index = start_index
 
     @property
-    def out_dec_number(self) -> int:
-        """Gets the out_dec_number of this ExchangePayload.
+    def filled_links(self) -> object:
+        """Gets the filled_links of this ExchangePayload.
 
 
-        :return: The out_dec_number of this ExchangePayload.
+        :return: The filled_links of this ExchangePayload.
+        :rtype: object
+        """
+        return self._filled_links
+
+    @filled_links.setter
+    def filled_links(self, filled_links: object):
+        """Sets the filled_links of this ExchangePayload.
+
+
+        :param filled_links: The filled_links of this ExchangePayload.
+        :type filled_links: object
+        """
+
+        self._filled_links = filled_links
+
+    @property
+    def end_index(self) -> int:
+        """Gets the end_index of this ExchangePayload.
+
+
+        :return: The end_index of this ExchangePayload.
         :rtype: int
         """
-        return self._out_dec_number
+        return self._end_index
 
-    @out_dec_number.setter
-    def out_dec_number(self, out_dec_number: int):
-        """Sets the out_dec_number of this ExchangePayload.
+    @end_index.setter
+    def end_index(self, end_index: int):
+        """Sets the end_index of this ExchangePayload.
 
 
-        :param out_dec_number: The out_dec_number of this ExchangePayload.
-        :type out_dec_number: int
+        :param end_index: The end_index of this ExchangePayload.
+        :type end_index: int
         """
 
-        self._out_dec_number = out_dec_number
+        self._end_index = end_index

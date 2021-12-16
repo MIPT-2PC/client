@@ -51,5 +51,4 @@ class ConfigUploader:
                 dict1[namer] = dict2
                 numerator = numerator + 1
 
-        print(json.dumps(dict1))
         self.dataToTransfer = dict1

@@ -139,11 +139,18 @@ components:
       properties:
         startIndex:
           type: integer
-        outDecNumber:
+        filledLinks:
+          type: object
+        endIndex:
           type: integer
       example:
-        startIndex: 54
-        outArray: 12
+        startIndex: 0
+        filledLinks:
+          "10": 1
+          "11": 0
+          "45": 1
+          "12": 1
+        endIndex: 67
     Answer:
       properties:
         result:
@@ -171,8 +178,13 @@ components:
     exchangePayloadExample:
       summary: Calculated layer example in Decimal representation
       value:
-        startIndex: 54
-        outArray: 12
+        startIndex: 0
+        filledLinks:
+          "10": 1
+          "11": 0
+          "45": 1
+          "12": 1
+        endIndex: 67
     preprocessedTableExample:
       summary: Preprocessed table example
       value:
