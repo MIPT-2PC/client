@@ -27,19 +27,24 @@ def exchange_out(body=None):  # noqa: E501
     if connexion.request.is_json:
         body = ExchangePayload.from_dict(connexion.request.get_json())  # noqa: E501
 
-    print("ClientB exchanging")
-    if not SendToPreprocessorRoutineInst.gotMaskedInput:
-        print("ClientB init exchange begin")
-        CalculationRoutineInst.maskedInputNeighbour = body.out_dec_number
-        result = SendToPreprocessorRoutineInst.inputNumber ^ SendToPreprocessorRoutineInst.inputMasks
-        CalculationRoutineInst.maskedInputSelf = result
-        SendToPreprocessorRoutineInst.gotMaskedInput = True
-        print("ClientB init exchange is done")
-        return [ExchangePayload(start_index=0, out_dec_number=result)], 200
-
-    #CalculationRoutineInst.q.put((body.start_index, body.out_dec_number))
-    position, result = CalculationRoutineInst.answer.get()
-    return [ExchangePayload(start_index=position, out_dec_number=result)], 200
+    if os.getenv('CLIENT_B', None) is not None:
+        if not SendToPreprocessorRoutineInst.gotMaskedInput:
+            print("HI THERE")
+            print(body.end_index)
+            print(body.start_index)
+            CalculationRoutineInst.maskedInputNeighbour = body.end_index
+            CalculationRoutineInst.resultBitness = body.start_index
+            result = SendToPreprocessorRoutineInst.inputNumber ^ SendToPreprocessorRoutineInst.inputMasks
+            CalculationRoutineInst.maskedInputSelf = result
+            SendToPreprocessorRoutineInst.gotMaskedInput = True
+            #print("ClientB got masked input fro ClientA")
+            #print(CalculationRoutineInst.maskedInputNeighbour)
+            return [ExchangePayload(start_index=0, filled_links={}, end_index=result)], 200
+    #print("storing neighbour data")
+    CalculationRoutineInst.q.put(body.filled_links)
+    #print("sending answer")
+    filled = CalculationRoutineInst.answer.get()
+    return [ExchangePayload(start_index=0, filled_links=filled, end_index=0)], 200
 
 
 def hello():  # noqa: E501
@@ -60,13 +65,12 @@ def hello():  # noqa: E501
         print("ClientB got reply from server and now starts calculation routine")
 
         def long_running_task(**kwargs):
-            params = kwargs.get('post_data', {})
             while not SendToPreprocessorRoutineInst.gotMaskedInput:
                 continue
-            CalculationRoutineInst.start(params)
+            CalculationRoutineInst.start(kwargs)
 
         thread = threading.Thread(target=long_running_task, kwargs={'config': SendToPreprocessorRoutineInst.config,
-                                                                    'nodes': SendToPreprocessorRoutineInst.nodes,
+                                                                    'nodes': SendToPreprocessorRoutineInst.nodes
                                                                     })
         thread.start()
 

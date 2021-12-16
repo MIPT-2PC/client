@@ -4,12 +4,14 @@ import six
 from swagger_server.models.answer import Answer  # noqa: E501
 from swagger_server.models.init import Init  # noqa: E501
 from swagger_server.models.exchange_payload import ExchangePayload  # noqa: E501
+from swagger_server.models.inline_response200 import InlineResponse200  # noqa: E501
 from swagger_server import util
 from .service.config_uploader import ConfigUploader
 from .service.init_routine import *
 from .service.calculation_routine import *
 import time
 import os
+import copy
 
 import swagger_client
 from swagger_client.rest import ApiException
@@ -52,6 +54,8 @@ def init(input_number=None, config=None):  # noqa: E501
         print("ClientA processed config file")
 
         print("ClientA is ready to send config to server")
+        SendToPreprocessorRoutineInst.resultBitness = copy.deepcopy(ConfigUploaderInst.dataToTransfer['config']['resultBitness'])
+        print(SendToPreprocessorRoutineInst.resultBitness)
         SendToPreprocessorRoutineInst.start(ConfigUploaderInst.dataToTransfer)
         print("ClientA should have preprocessed table here and begin some computations on them")
 
@@ -76,23 +80,23 @@ def init(input_number=None, config=None):  # noqa: E501
         '''
         maskedInput = SendToPreprocessorRoutineInst.inputMasks ^ SendToPreprocessorRoutineInst.inputNumber
 
-        time.sleep(1)  # чисто чтобы удостовериться, что клиент В успел получить данные от препроцессора
-        body = ExchangePayload(start_index=0, out_dec_number=maskedInput)
+        time.sleep(2)  # чисто чтобы удостовериться, что клиент В успел получить данные от препроцессора
+        body = ExchangePayload(start_index=int(SendToPreprocessorRoutineInst.resultBitness), filled_links={}, end_index=maskedInput)
         print("ClientA share itself masked input to ClientB")
         try:
             api_response = api_instance.exchange_out(body=body)
-            CalculationRoutineInst.maskedInputNeighbour = api_response[0].out_dec_number
+            CalculationRoutineInst.maskedInputNeighbour = api_response[0].end_index
             CalculationRoutineInst.maskedInputSelf = maskedInput
+            CalculationRoutineInst.resultBitness = SendToPreprocessorRoutineInst.resultBitness
             print("ClientA got masked input from ClientB:")
             print(api_response)
         except ApiException as e:
             print("Exception when calling ExternalCallsApi->get_result: %s\n" % e)
 
-
         def generate():
             yield "Success initiation. Results will be available with /getResult request"
             CalculationRoutineInst.start({'config': SendToPreprocessorRoutineInst.config,
-                                          'nodes': SendToPreprocessorRoutineInst.nodes,
+                                          'nodes': SendToPreprocessorRoutineInst.nodes
                                           })
             yield ''
         return Response(generate(), mimetype='application/json'), 200

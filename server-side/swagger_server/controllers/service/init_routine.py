@@ -27,11 +27,12 @@ class InitRoutine:
 
 class SendToPreprocessorRoutine:
 
+    resultBitness = None
     inputNumber = None
     Response_nodes = []
     gotMaskedInput = False
-    maskedInputLocal = 0
-    maskedInputNeighbour = 0
+    maskedInputLocal = None
+    maskedInputNeighbour = None
 
     if os.getenv('CLIENT_A', None) is not None:
         adversary = True
@@ -70,6 +71,7 @@ class SendToPreprocessorRoutine:
 
         if self.adversary:
             api_instance = swagger_client_pre.PreprocessorApi()
+            self.uploadedData = dataToTransfer
 
             try:
                 # start preprocessing procedure
@@ -90,7 +92,6 @@ class SendToPreprocessorRoutine:
                     self.nodes[i] = json.loads(json.dumps(api_response[0]['node' + str(i + 1)]), object_hook=lambda d: SimpleNamespace(**d))
                 print("ClientA parsed preprocessed data successfully")
 
-                print(api_response)
             except ApiException as e:
                 print("Exception when calling InteractionApi->start2_pc: %s\n" % e)
 
